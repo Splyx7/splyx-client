@@ -36,6 +36,10 @@ if (project.hasProperty('oneconfig')) {
         maven { url = 'https://repo.polyfrost.org/releases' }
     }
     dependencies {
-        modImplementation "org.polyfrost.oneconfig:${project.minecraft_version}-fabric:${project.oneconfig_version}"
+        modImplementation("org.polyfrost.oneconfig:${project.minecraft_version}-fabric:${project.oneconfig_version}") {
+            ['org.jetbrains.skiko', 'maven.modrinth', 'androidx.annotation', 'androidx.collection',
+             'androidx.compose.runtime', 'androidx.graphics', 'androidx.lifecycle', 'androidx.navigation',
+             'androidx.navigationevent', 'androidx.savedstate'].each { g -> exclude group: g }
+        }
     }
 }
